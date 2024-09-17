@@ -1,27 +1,84 @@
-# Car-price-Predictor
+# Car Price Predictor
 
-# Car Price Prediction
+This project aims to predict the selling price of cars using machine learning models. It includes a Jupyter notebook for data preprocessing, model training, and evaluation, and a Streamlit application for real-time predictions.
 
-## Project Overview
-This project aims to predict the selling price of cars using machine learning models. The project utilizes various features of cars such as brand, manufacturing year, kilometers driven, fuel type, transmission, mileage, engine capacity, and more to make accurate price predictions. A user-friendly **Streamlit** web application is also included, allowing users to input car details and receive a predicted price instantly.
+## Project Structure
 
-## Key Features
-- **Data Cleaning & Preprocessing:** The dataset is thoroughly preprocessed, including handling missing values, encoding categorical variables, and feature extraction.
-- **Model Training & Evaluation:** Several machine learning models, including **Linear Regression**, **Decision Tree**, and **Random Forest**, were trained and evaluated. The **Random Forest Regressor** was selected for its superior performance.
-- **Interactive Web Application:** A professional and intuitive **Streamlit** app allows users to input car features and get predictions on car prices.
+- **`car price prediction.ipynb`**: A Jupyter notebook that performs data cleaning, feature engineering, model training, and evaluation. It processes the dataset, trains various regression models, and evaluates their performance. The best-performing model is saved for use in the Streamlit app.
+- **`app.py`**: A Streamlit application script that uses the trained model to make predictions based on user input through an interactive web interface.
 
-## Dataset
-The dataset includes the following features:
-- Car brand (e.g., Maruti, Hyundai, Honda)
-- Year of manufacture
-- Kilometers driven
-- Fuel type (Diesel, Petrol, CNG, etc.)
-- Transmission type (Manual/Automatic)
-- Ownership history (First owner, Second owner, etc.)
-- Mileage, engine capacity, and max power.
+## Prerequisites
 
-## Installation
-1. Clone the repository:
-   ```bash
-   git clone <repository_url>
-   cd car-price-prediction
+Before running the Jupyter notebook or the Streamlit app, ensure you have the following Python packages installed:
+
+- `pandas`
+- `numpy`
+- `matplotlib`
+- `seaborn`
+- `scikit-learn`
+- `streamlit`
+- `pickle`
+
+Install the required packages using pip:
+
+```bash
+pip install pandas numpy matplotlib seaborn scikit-learn streamlit
+
+## Setup and Usage
+
+### Jupyter Notebook (`car price prediction.ipynb`)
+
+1. **Download the Dataset**:
+   - Ensure that you have the dataset file named `Car details v3.csv` placed in a directory named `DATASET`.
+
+2. **Run the Notebook**:
+   - Open the `car price prediction.ipynb` notebook in Jupyter.
+   - Execute all cells to perform the following tasks:
+     - Load and clean the dataset.
+     - Perform feature engineering and encode categorical variables.
+     - Train multiple machine learning models (Linear Regression, Decision Tree, Random Forest).
+     - Evaluate models and save the best model (RandomForestRegressor) as `model.pkl`.
+
+3. **Save the Model**:
+   - The notebook saves the trained Random Forest model as `model.pkl` in the working directory.
+
+### Streamlit Application (`app.py`)
+
+1. **Prepare the Model and Dataset**:
+   - Ensure `model.pkl` (saved from the Jupyter notebook) and `Car details v3.csv` (dataset file) are in the same directory as `app.py`.
+
+2. **Run the Streamlit App**:
+   - Open a terminal or command prompt.
+   - Navigate to the directory containing `app.py`.
+   - Run the Streamlit app using the following command:
+
+     ```bash
+     streamlit run app.py
+     ```
+
+3. **Interact with the App**:
+   - Use the Streamlit sidebar to provide details about the car.
+   - Adjust the sliders and dropdown menus for the car’s features.
+   - Click the "Predict" button to get an estimated price for the car.
+   - The predicted price will be displayed at the bottom of the page.
+
+## Data Description
+
+The dataset `Car details v3.csv` contains the following features:
+
+- **`name`**: Car brand and model.
+- **`year`**: Manufacturing year of the car.
+- **`km_driven`**: Number of kilometers driven.
+- **`fuel`**: Fuel type (e.g., Diesel, Petrol).
+- **`seller_type`**: Type of seller (e.g., Individual, Dealer).
+- **`transmission`**: Transmission type (e.g., Manual, Automatic).
+- **`owner`**: Number of previous owners.
+- **`mileage`**: Mileage in km/l.
+- **`engine`**: Engine capacity in cc.
+- **`max_power`**: Maximum power in bhp.
+- **`seats`**: Number of seats.
+- **`selling_price`**: Price of the car (target variable).
+
+## Model
+
+The best-performing model, **RandomForestRegressor**, is used for predicting car prices based on the input features. The model was trained and evaluated in the Jupyter notebook and saved as `model.pkl` for use in the Streamlit app.
