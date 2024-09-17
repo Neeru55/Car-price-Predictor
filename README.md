@@ -24,4 +24,5 @@ Install the required packages using pip:
 ```bash
 pip install pandas numpy matplotlib seaborn scikit-learn streamlit
 
- 
+use this to run app.py 
+streamlit run app.py
